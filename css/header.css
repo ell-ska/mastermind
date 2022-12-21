@@ -12,7 +12,7 @@
 
 .menu__button {
     position: absolute;
-    z-index: 999;
+    z-index: 998;
     right: 2rem;
     padding: 0;
     border: none;

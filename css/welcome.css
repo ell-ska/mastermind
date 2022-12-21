@@ -1,6 +1,6 @@
 .welcome-screen {
     position: fixed;
-    z-index: 900;
+    z-index: 999;
     display: none;
     justify-content: center;
     align-items: center;
