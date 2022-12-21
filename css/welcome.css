@@ -1,0 +1,159 @@
+.welcome-screen {
+    position: fixed;
+    z-index: 900;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--color-neutral-900-50);
+}
+
+.welcome-screen--open {
+    display: flex;
+}
+
+.welcome-screen__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    padding: 3rem 2rem 1.5rem;
+    max-width: 34rem;
+    max-height: 90vh;
+    border-radius: 20px;
+    background-color: var(--color-neutral-200);
+    overflow-y: scroll;
+}
+
+.welcome-screen__title {
+    margin-bottom: 11px;
+    font-size: var(--font-size-3);
+}
+
+.welcome-screen__branding {
+    margin-bottom: 3rem;
+}
+
+.welcome-screen__start-button {
+    margin-bottom: 3rem;
+}
+
+.welcome-screen__rules-button {
+    align-self: flex-start;
+    display: inline-flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 17px;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.welcome-screen__rules-button::after {
+    content: url('../assets/icons/chevron.svg');
+    display: block;
+}
+
+.welcome-screen__rules-button--clicked {
+    cursor: default;
+}
+
+.welcome-screen__rules-button--clicked::after {
+    display: none;
+}
+
+.rules {
+    display: none;
+    flex-direction: column;
+}
+
+.rules--open {
+    display: flex;
+}
+
+.rules__objective {
+    margin-bottom: 3rem;
+}
+
+.rules__buttons {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 38px;
+}
+
+.rules__delete,
+.rules__reset,
+.rules__randomize div,
+.rules__submit {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.rules__delete {
+    margin-top: 10px;
+}
+
+.rules__randomize {
+    display: flex;
+    flex-direction: column;
+    margin-top: 14px;
+}
+
+.rules__randomize div {
+    margin-top: 10px;
+}
+
+.rules__response > p {
+    margin-bottom: 1.5rem;
+}
+
+.rules__response-black {
+    margin-bottom: 1.5rem;
+}
+
+.rules__response-gray {
+    margin-bottom: 3rem;
+}
+
+.rules__response-black,
+.rules__response-gray{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.rules__response-demo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+}
+
+.rules__response-demo-dot {
+    width: 12px;
+    height: 12px;
+    border: 2px solid var(--color-neutral-300);
+    border-radius: 50%;
+}
+
+.rules__response-black .rules__response-demo-dot:first-of-type {
+    border-color: var(--color-neutral-900);
+    background-color: var(--color-neutral-900);
+}
+
+.rules__response-gray .rules__response-demo-dot:first-of-type {
+    background-color: var(--color-neutral-300);
+}
+
+.rules__conclusion {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.rules__button {
+    align-self: center;
+    margin-top: 2rem;
+}

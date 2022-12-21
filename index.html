@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastermind</title>
+    <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.png">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/game.css">
+    <link rel="stylesheet" href="css/welcome.css">
+    <script src="js/jquery-3.6.1.min.js"></script>
+    <script src="js/mastermind.js" defer></script>
+</head>
+<body>
+    <section class="welcome-screen">
+        <div class="welcome-screen__inner">
+            <h1 class="welcome-screen__title">Welcome to <span class="screen-reader-only">Mastermind</span></h1>
+            <div class="welcome-screen__branding">
+                <img src="assets/icons/logo.svg" alt="">
+            </div>
+            <button class="welcome-screen__button start-button button">Start game</button>
+            <button class="welcome-screen__rules-button">Rules</button>
+            <div class="rules">
+                <p class="rules__objective">The objective of the game is to guess the exact positions of the colors in the computer chosen sequence. The sequence is made up by four colors, duplicates are allowed.</p>
+                <div class="rules__buttons">
+                    <p>Fill your line with guesses by clicking the colors to the left.</p>
+                    <div class="rules__delete">
+                        <p>You can go back one color</p>
+                        <button class="button--round button--yellow">
+                            <img src="assets/icons/delete.svg" alt="">
+                        </button>
+                    </div>
+                    <div class="rules__reset">
+                        <p>or remove all colors</p>
+                        <button class="button--round button--orange">
+                            <img src="assets/icons/reset.svg" alt="">
+                        </button>
+                    </div>
+                    <div class="rules__randomize">
+                        <p>from your active line. If you run out of ideas you can use</p>
+                        <div>
+                            <p>the randomizer.</p>
+                            <button class="button--round button--green">
+                                <img src="assets/icons/random.svg" alt="">
+                            </button>
+                        </div>
+                    </div>
+                    <div class="rules__submit">
+                        <p>You can change your guesses until you submit them.</p>
+                        <button class="button--round">
+                            <img src="assets/icons/check.svg" alt="">
+                        </button>
+                    </div>
+                </div>
+                <div class="rules__response">
+                    <p>Once submited the computer will display a response to the result of your guesses:</p>
+                    <div class="rules__response-black">
+                        <div class="rules__response-demo">
+                            <div class="rules__response-demo-dot"></div>
+                            <div class="rules__response-demo-dot"></div>
+                            <div class="rules__response-demo-dot"></div>
+                            <div class="rules__response-demo-dot"></div>
+                        </div>
+                        <p>A black dot means both the correct color and the position is correct.</p>
+                    </div>
+                    <div class="rules__response-gray">
+                        <div class="rules__response-demo">
+                            <div class="rules__response-demo-dot"></div>
+                            <div class="rules__response-demo-dot"></div>
+                            <div class="rules__response-demo-dot"></div>
+                            <div class="rules__response-demo-dot"></div>
+                        </div>
+                        <p>A gray dot means the color is corret but the positions is not.</p>
+                    </div>
+                </div>
+                <div class="rules__conclusion">
+                    <p>You win the game if you manage to guess all the colors and their positions in the sequense.</p>
+                    <p>You lose the game if you use all guesses and don't figure out the sequense. You have 12 guesses in total.</p>
+                    <p><strong>Good luck!</strong></p>
+                </div>
+                <button class="rules__button start-button button">Start game</button>
+            </div>
+        </div>
+    </section>
+    <div class="container">
+        <header class="header">
+            <div class="header__branding">
+                <img src="assets/icons/logo.svg" alt="">
+            </div>
+            <button class="menu__button">
+                <img src="assets/icons/menu.svg" alt="">
+            </button>
+            <div class="menu">
+                <button class="menu__item start-button button button--green">Restart</button>
+                <button class="menu__item rules-button button">Rules</button>
+                <button class="menu__item stats-button button button--orange">Statistics</button>
+                <section class="stats">
+                    <div class="stats__inner">
+                        <h3 class="stats__title">Statistics</h3>
+                        <div class="stats__stats">
+                            <div class="stats__played">
+                                <span class="stats__number">0</span>
+                                <span>Played</span>
+                            </div>
+                            <div class="stats__won">
+                                <span class="stats__number">0</span>
+                                <span>Won</span>
+                            </div>
+                            <div class="stats__won-percentage">
+                                <span class="stats__number">0</span>
+                                <span>Win %</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </header>
+        <main class="game">
+            <div class="game__inner">
+
+                <div class="game-board">
+
+                    <div class="color-selector">
+                        <div class="color-selector__inner">
+                            <div class="color-selector__dots">
+                                <div class="color-selector__dot dot" data-color="blue"></div>
+                                <div class="color-selector__dot dot" data-color="light-blue"></div>
+                                <div class="color-selector__dot dot" data-color="green"></div>
+                                <div class="color-selector__dot dot" data-color="yellow"></div>
+                                <div class="color-selector__dot dot" data-color="orange"></div>
+                                <div class="color-selector__dot dot" data-color="red"></div>
+                                <div class="color-selector__dot dot" data-color="pink"></div>
+                                <div class="color-selector__dot dot" data-color="purple"></div>
+                            </div>
+                            <button class="color-selector__button button--round deactivated">
+                                <img src="assets/icons/check.svg" alt="">
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <span class="row__number">1</span>
+                        <div class="row__dots">
+                            <div class="row__dot dot"></div>
+                            <div class="row__dot dot"></div>
+                            <div class="row__dot dot"></div>
+                            <div class="row__dot dot"></div>
+                        </div>
+                        <div class="row__response">
+                            <div class="row__response-dot"></div>
+                            <div class="row__response-dot"></div>
+                            <div class="row__response-dot"></div>
+                            <div class="row__response-dot"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <span class="row__number">2</span>
+                        <div class="row__dots">
+                            <div class="row__dot dot"></div>
+                            <div class="row__dot dot"></div>
+                            <div class="row__dot dot"></div>
+                            <div class="row__dot dot"></div>
+                        </div>
+                        <div class="row__response">
+                            <div class="row__response-dot"></div>
+                            <div class="row__response-dot"></div>
+                            <div class="row__response-dot"></div>
+                            <div class="row__response-dot"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <span class="row__number">3</span>
+                        <div class="row__dots">
+                            <div class="row__dot dot"></div>
+                            <div class="row__dot dot"></div>
+                            <div class="row__dot dot"></div>
+                            <div class="row__dot dot"></div>
+                        </div>
+                        <div class="row__response">
+                            <div class="row__response-dot"></div>
+                            <div class="row__response-dot"></div>
+                            <div class="row__response-dot"></div>
+                            <div class="row__response-dot"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <span class="row__number">4</span>
+                        <div class="row__dots">
+                            <div class="row__dot dot"></div>
+                            <div class="row__dot dot"></div>
+                            <div class="row__dot dot"></div>
+                            <div class="row__dot dot"></div>
+                        </div>
+                        <div class="row__response">
+                            <div class="row__response-dot"></div>
+                            <div class="row__response-dot"></div>
+                            <div class="row__response-dot"></div>
+                            <div class="row__response-dot"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <span class="row__number">5</span>
+                        <div class="row__dots">
+                            <div class="row__dot dot"></div>
+                            <div class="row__dot dot"></div>
+                            <div class="row__dot dot"></div>
+                            <div class="row__dot dot"></div>
+                        </div>
+                        <div class="row__response">
+                            <div class="row__response-dot"></div>
+                            <div class="row__response-dot"></div>
+                            <div class="row__response-dot"></div>
+                            <div class="row__response-dot"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <span class="row__number">6</span>
+                        <div class="row__dots">
+                            <div class="row__dot dot"></div>
+                            <div class="row__dot dot"></div>
+                            <div class="row__dot dot"></div>
+                            <div class="row__dot dot"></div>
+                        </div>
+                        <div class="row__response">
+                            <div class="row__response-dot"></div>
+                            <div class="row__response-dot"></div>
+                            <div class="row__response-dot"></div>
+                            <div class="row__response-dot"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <span class="row__number">7</span>
+                        <div class="row__dots">
+                            <div class="row__dot dot"></div>
+                            <div class="row__dot dot"></div>
+                            <div class="row__dot dot"></div>
+                            <div class="row__dot dot"></div>
+                        </div>
+                        <div class="row__response">
+                            <div class="row__response-dot"></div>
+                            <div class="row__response-dot"></div>
+                            <div class="row__response-dot"></div>
+                            <div class="row__response-dot"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <span class="row__number">8</span>
+                        <div class="row__dots">
+                            <div class="row__dot dot"></div>
+                            <div class="row__dot dot"></div>
+                            <div class="row__dot dot"></div>
+                            <div class="row__dot dot"></div>
+                        </div>
+                        <div class="row__response">
+                            <div class="row__response-dot"></div>
+                            <div class="row__response-dot"></div>
+                            <div class="row__response-dot"></div>
+                            <div class="row__response-dot"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <span class="row__number">9</span>
+                        <div class="row__dots">
+                            <div class="row__dot dot"></div>
+                            <div class="row__dot dot"></div>
+                            <div class="row__dot dot"></div>
+                            <div class="row__dot dot"></div>
+                        </div>
+                        <div class="row__response">
+                            <div class="row__response-dot"></div>
+                            <div class="row__response-dot"></div>
+                            <div class="row__response-dot"></div>
+                            <div class="row__response-dot"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <span class="row__number">10</span>
+                        <div class="row__dots">
+                            <div class="row__dot dot"></div>
+                            <div class="row__dot dot"></div>
+                            <div class="row__dot dot"></div>
+                            <div class="row__dot dot"></div>
+                        </div>
+                        <div class="row__response">
+                            <div class="row__response-dot"></div>
+                            <div class="row__response-dot"></div>
+                            <div class="row__response-dot"></div>
+                            <div class="row__response-dot"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <span class="row__number">11</span>
+                        <div class="row__dots">
+                            <div class="row__dot dot"></div>
+                            <div class="row__dot dot"></div>
+                            <div class="row__dot dot"></div>
+                            <div class="row__dot dot"></div>
+                        </div>
+                        <div class="row__response">
+                            <div class="row__response-dot"></div>
+                            <div class="row__response-dot"></div>
+                            <div class="row__response-dot"></div>
+                            <div class="row__response-dot"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <span class="row__number">12</span>
+                        <div class="row__dots">
+                            <div class="row__dot dot"></div>
+                            <div class="row__dot dot"></div>
+                            <div class="row__dot dot"></div>
+                            <div class="row__dot dot"></div>
+                        </div>
+                        <div class="row__response">
+                            <div class="row__response-dot"></div>
+                            <div class="row__response-dot"></div>
+                            <div class="row__response-dot"></div>
+                            <div class="row__response-dot"></div>
+                        </div>
+                    </div>
+                    <div class="results hidden">
+                        <h3 class="results__title"></h3>
+                        <p class="results__text"></p>
+                        <div class="results__dots">
+                            <div class="results__dot dot"></div>
+                            <div class="results__dot dot"></div>
+                            <div class="results__dot dot"></div>
+                            <div class="results__dot dot"></div>
+                        </div>
+                        <button class="results__button start-button button"></button>
+                    </div>
+
+                    <div class="game-buttons">
+                        <div class="game-buttons__inner">
+                            <button class="game-buttons__delete button--round button--yellow">
+                                <img src="assets/icons/delete.svg" alt="">
+                            </button>
+                            <button class="game-buttons__reset button--round button--orange">
+                                <img src="assets/icons/reset.svg" alt="">
+                            </button>
+                            <button class="game-buttons__random button--round button--green">
+                                <img src="assets/icons/random.svg" alt="">
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </main>
+    </div>
+</body>
+</html>

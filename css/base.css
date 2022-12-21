@@ -1,0 +1,114 @@
+/* Font */
+@font-face {
+    font-family: 'Readex Pro';
+    font-weight: 400;
+    src: url('../assets/fonts/ReadexPro-Regular.woff') format('woff'),
+         url('../assets/fonts/ReadexPro-Regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Readex Pro';
+    font-weight: 700;
+    src: url('../assets/fonts/ReadexPro-Bold.woff') format('woff'),
+         url('../assets/fonts/ReadexPro-Bold.woff2') format('woff2');
+}
+
+/* Resets */
+* {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+}
+
+body {
+    background-color: var(--color-neutral-200);
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-bold);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+img, svg {
+    display: block;
+    max-width: 100%;
+}
+
+input, button, textarea, select {
+    font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+}
+
+p {
+    font-size: var(--font-size-1);
+    font-weight: var(--font-weight-regular);
+    line-height: 1.5;
+}
+
+strong {
+    font-weight: var(--font-weight-bold);
+}
+
+.screen-reader-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.container {
+    overflow: hidden;
+}
+
+.container--locked {
+    position: fixed;
+}
+
+.stats {
+    position: fixed;
+    z-index: 900;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-neutral-200);
+}
+
+.stats--open {
+    display: flex;
+}
+
+.stats__title {
+    font-size: var(--font-size-3);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.stats__stats {
+    display: flex;
+    gap: 4rem;
+}
+
+.stats__won, 
+.stats__played,
+.stats__won-percentage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: var(--font-weight-regular);
+}
+
+.stats__number {
+    font-size: var(--font-size-4);
+    font-weight: var(--font-weight-bold);
+}

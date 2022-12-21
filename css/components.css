@@ -1,0 +1,125 @@
+/* Color dots */
+.dot {
+    width: 32px;
+    height: 32px;
+    border: solid 2px var(--color-neutral-200);
+    border-radius: 50%;
+    background-color: var(--color-neutral-200);
+}
+
+.dot[data-color="blue"] {
+    border-color: var(--color-neutral-900);
+    background-color: var(--color-blue);
+}
+
+.dot[data-color="light-blue"] {
+    border-color: var(--color-neutral-900);
+    background-color: var(--color-light-blue);
+}
+
+.dot[data-color="green"] {
+    border-color: var(--color-neutral-900);
+    background-color: var(--color-green);
+}
+
+.dot[data-color="yellow"] {
+    border-color: var(--color-neutral-900);
+    background-color: var(--color-yellow);
+}
+
+.dot[data-color="orange"] {
+    border-color: var(--color-neutral-900);
+    background-color: var(--color-orange);
+}
+
+.dot[data-color="red"] {
+    border-color: var(--color-neutral-900);
+    background-color: var(--color-red);
+}
+
+.dot[data-color="pink"] {
+    border-color: var(--color-neutral-900);
+    background-color: var(--color-pink);
+}
+
+.dot[data-color="purple"] {
+    border-color: var(--color-neutral-900);
+    background-color: var(--color-purple);
+}
+
+/* Buttons */
+
+button {
+    color: var(--color-neutral-900);
+}
+
+.button--round {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;
+    height: 3rem;
+    border: 2px solid var(--color-neutral-900);
+    border-radius: 50%;
+    background-color: var(--color-neutral-100);
+    cursor: pointer;
+    box-shadow: 4px 4px 0 -2px var(--color-blue), 4px 4px var(--color-neutral-900);
+}
+
+.button {
+    position: relative;
+    padding: calc(1rem - 2px) calc(2rem - 2px);
+    border: 2px solid var(--color-neutral-900);
+    border-radius: 28px;
+    background-color: var(--color-neutral-100);
+    color: var(--color-neutral-900);
+    cursor: pointer;
+    box-shadow: 4px 4px 0 -2px var(--color-blue), 4px 4px var(--color-neutral-900);
+}
+
+button.deactivated::after {
+    box-shadow: 4px 4px 0 -2px #CBD8F7, 4px 4px #BCBCBD;
+}
+
+.button--yellow {
+    box-shadow: 4px 4px 0 -2px var(--color-yellow), 4px 4px var(--color-neutral-900);
+}
+
+.button--yellow.deactivated::after {
+    box-shadow: 4px 4px 0 -2px #F5E5C3, 4px 4px #BCBCBD;
+}
+
+.button--orange {
+    box-shadow: 4px 4px 0 -2px var(--color-orange), 4px 4px var(--color-neutral-900);
+}
+
+.button--orange.deactivated::after {
+    box-shadow: 4px 4px 0 -2px #F5DACC, 4px 4px #BCBCBD;
+}
+
+.button--green {
+    box-shadow: 4px 4px 0 -2px var(--color-green), 4px 4px var(--color-neutral-900);
+}
+
+.button--green.deactivated::after {
+    box-shadow: 4px 4px 0 -2px #D0E3D6, 4px 4px #BCBCBD;
+}
+
+/* Deactivated */
+
+div.deactivated,
+button.deactivated {
+    cursor: default;
+}
+
+.deactivated::after {
+    content: '';
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    border-radius: 50%;
+    background-color: var(--color-neutral-200-75);
+}

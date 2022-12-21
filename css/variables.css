@@ -1,0 +1,36 @@
+:root {
+    /* --section-gap: 7rem;
+    --inner-gap: 2rem; */
+
+    --grid-container: minmax(2rem, 1fr) minmax(0, 76rem) minmax(2rem, 1fr);
+    --grid-container-inner: repeat(3, 1fr);
+
+    --color-neutral-900: #191610;
+    --color-neutral-900-50: #19161080;
+    --color-neutral-300: #DADDE4;
+    --color-neutral-200-75: #F2F3F7BF;
+    --color-neutral-200: #F2F3F7;
+    --color-neutral-100: #fff;
+
+    --color-blue: #5586F5;
+    --color-light-blue: #8FC4EE;
+    --color-green: #6CB472;
+    --color-yellow: #FFBA27;
+    --color-orange: #FE8E4D;
+    --color-red: #D6484D;
+    --color-pink: #FFC9C9;
+    --color-purple: #B766C3;
+    
+    --font-primary: "Readex Pro", sans-serif;
+    --font-base: 16px;
+    --font-scale: 1.25;
+    --font-size-0: calc(var(--font-base) / var(--font-scale));
+    --font-size-1: var(--font-base);
+    --font-size-2: calc(var(--font-size-1) * var(--font-scale));
+    --font-size-3: calc(var(--font-size-2) * var(--font-scale));
+    --font-size-4: calc(var(--font-size-3) * var(--font-scale));
+    --font-size-5: calc(var(--font-size-4) * var(--font-scale));
+    --font-size-6: calc(var(--font-size-5) * var(--font-scale));
+    --font-weight-regular: 400;
+    --font-weight-bold: 700;
+}
