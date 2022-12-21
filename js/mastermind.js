@@ -42,10 +42,6 @@ $(function() {
         let gamesWon = localStorage.getItem('gamesWon')
         let gamesWonPercentage = Math.floor((gamesWon / gamesPlayed) * 100)
 
-        console.log(parseInt(gamesPlayed))
-        console.log(parseInt(gamesWon))
-        console.log(gamesWonPercentage)
-
         if (gamesPlayed) {
             $('.stats__played').children('.stats__number').text(gamesPlayed)
         }
@@ -103,12 +99,12 @@ $(function() {
         let guess = []
         let currentRow = 1
         
-        const generateSequence = () => {
+        const generateSequence = (array) => {
             for (let i = 0; i < 4; i++) {
-                sequence.push(colors[Math.floor(Math.random() * colors.length)])
+                array.push(colors[Math.floor(Math.random() * colors.length)])
             }
         }
-        generateSequence()
+        generateSequence(sequence)
         console.log(sequence)
 
         const deleteGuess = () => {
@@ -122,6 +118,7 @@ $(function() {
                 })
             }
         }
+        $('.game-buttons__delete').on('click', deleteGuess)
 
         const resetGuess = () => {
             if (guess.length > 0) {
@@ -134,29 +131,24 @@ $(function() {
                 })
             }
         }
+        $('.game-buttons__reset').on('click', resetGuess)
 
         const randomizeGuess = () => {
             $('.row__number').each(function() {
                 if (this.textContent == currentRow) {
                     
                     let randomGuess = []
-                    for (let i = 0; i < 4; i++) {
-                        randomGuess.push(colors[Math.floor(Math.random() * colors.length)])
-                    }
+                    generateSequence(randomGuess)
 
                     $(this).siblings('.row__dots').children().each(function(index) {
                         $(this).attr('data-color', randomGuess[index])
                     })
 
                     guess = [...randomGuess]
-                    
                     activateSubmitButton()
                 }
             })
         }
-
-        $('.game-buttons__delete').on('click', deleteGuess)
-        $('.game-buttons__reset').on('click', resetGuess)
         $('.game-buttons__random').on('click', randomizeGuess)
         
         let submitButton = document.querySelector('.color-selector__button')
